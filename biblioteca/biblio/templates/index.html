@@ -1,0 +1,254 @@
+{% load carton_tags %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Home.</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/navStyle.css' %}">
+    {% block css %}
+    {% endblock %}
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<!--Barra de navegacion-->
+
+			<nav class="navbar navbar-default navbar-fixed-top navbar">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class"navbar-toggle collapsed" data-toggle="collapse" data target="#navbar-1">
+						<span class="sr-only">Menú</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>
+						<a href="/ " class="navbar-brand" style="color:white">Libreria Carmesí</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbar-1">
+						<ul class="nav navbar-nav">
+							<!--Posibles categorias-->
+
+						</ul>
+						{% if error %}
+              					  <p style="color: red;">Por favor introduce un término de búsqueda.</p>
+            {% endif %}
+						<form action="/buscar/" class="navbar-form navbar-right" method="get" rolse="search">
+							<div class="form-group">
+								<input type"text" class="form-control" placeholder="Buscar libro..." name="q">
+								<input type="submit" class="btn btn-primary" value="Buscar">
+							</div>
+						</form>
+					</div>
+				</div>
+			</nav>
+
+			<!--Termina barra de navegación-->
+
+
+				<!--Inician botones con hover-->
+		<a href=" ">
+			<div class ="contenedor" id="uno">
+				<img class="icono" src={% static 'img/nav/icon1.png' %}>
+				<p class="navtexto">Inicio</p>
+			</div>
+		</a>
+		<a href="libros/">
+			<div class ="contenedor" id="dos">
+				<img class="icono" src={% static 'img/nav/icon2.png' %}>
+				<p class="navtexto">Libros</p>
+			</div>
+		</a>
+			<!--
+			<div class ="contenedor" id="tres">
+				<img class="icono" src="img/nav/icon3.png">
+				<p class="navtexto">Google +</p>
+			</div>
+			<div class ="contenedor" id="cuatro">
+				<img class="icono" src="img/nav/icon4.png">
+				<p class="navtexto">Apple</p>
+			</div>
+		-->
+		<a href="/ubicacion">
+			<div class ="contenedor" id="cinco">
+				<img class="icono" src={% static 'img/nav/icon5.png' %}>
+				<p class="navtexto">Ubicación</p>
+			</div>
+		</a>
+
+		<a href="/contactos">
+			<div class ="contenedor" id="seis">
+				<img class="icono" src={% static 'img/nav/icon6.png' %}>
+				<p class="navtexto">Contactanos</p>
+			</div>
+		</a>
+			<!--Terminan botones con hover-->
+
+
+
+
+		</header>
+		<!--Migas de pan-->
+		<div class="container-fluid">
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li class="active" style="color:white">Inicio</li>
+				</ol>
+
+			</div>
+		</div>
+		<!--Terminan migas de pan-->
+	<div class="contenido">
+
+
+		<!--- Inicia el slider-->
+		<div class ="container-fluid">
+			<h3>Grandes exitos:</h3>
+					<div id="carousel-libros" class="carousel slide" data-ride="carousel">
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-libros" data-slide-to="0" class="active"></li>
+							<li data-target="#carousel-libros" data-slide-to="1"></li>
+							<li data-target="#carousel-libros" data-slide-to="2"></li>
+
+						</ol>
+
+						<div class="carousel-inner" role="listbox">
+							<!--Imagenes a mostrar en el slider-->
+							<div class="item active">
+							<a href="/buscar/?q=Harry">	<img src={% static 'img/slider/1.jpg' %} alt="">
+								<div class="carousel-caption">
+									<h3>Harry Potter.</h3>
+									<p>Magos fantasia y mas...</p>
+								</div>
+							</div>
+
+							<div class="item">
+								<a href="/buscar/?q=Principito"><img src={% static 'img/slider/2.jpg' %} alt="...">
+								<div class="carousel-caption">
+									<h3>El principito.</h3>
+									<p> Descubre la facinante historia de este pequeño </p>
+								</div>
+							</div>
+							<div class="item">
+								<a href="/buscar/?q=Zelda"><img src={% static 'img/slider/4.jpg' %} alt="...">
+								<div class="carousel-caption">
+									<h3>Hirrule Historia</h3>
+									<p style="color:white">Mira la historia de Zelda y de estas misteriosas tirerras</p>
+								</div>
+							</div>
+						</div>
+
+						<!-- Controles-->
+						<a class="left carousel-control" href="#carousel-libros" role="button" data-slide="prev">
+							<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previo</span>
+						</a>
+						<a class="right carousel-control" href="#carousel-libros" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+							<span class="sr-only">Siguiente</span>
+						</a>
+
+
+					</div>
+		</div>
+		<!--Termina el slider-->
+
+					<section class="testimony_section">
+						<div class="container-fluid">
+							<h3>Clientes satisfechos.</h3>
+							<div class="row">
+								<div class="col-md-4">
+									<div class="testimony mtop8">
+										<img src={% static 'img/testimony/testimony1.jpg' %} class="img-circle">
+										<p>Buenos Libros buenos precios, mi pagina favorita</p>
+										<a href="https://www.facebook.com/raulmenendezgalan">@raulmenendezgalan <i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="testimony mtop8">
+										<img src={% static 'img/testimony/testimony2.jpg' %} class="img-circle">
+										<p>Siempre compro mis libros en Libreria Carmesi</p>
+										<a href="https://www.facebook.com/jaime.mejia.560272">@jaime.mejia <i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="testimony mtop8">
+										<img src={% static 'img/testimony/testimony3.jpg'%} class="img-circle">
+										<p>Aqui encontre el libro de la charlotte que tanto buscaba</p>
+										<a href="https://www.facebook.com/gabriel.pikazo">@gabriel.pikazo <i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="testimony mtop8">
+										<img src={% static 'img/testimony/testimony4.jpg'%} class="img-circle">
+										<p>Siempre encuentro los libros que busco a un buen precio</p>
+										<a href="https://www.facebook.com/brr2d2">@Chamagua <i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<div class="testimony mtop8">
+										<img src={% static 'img/testimony/testimony5.jpg'%} class="img-circle">
+										<p>Libros de buena calidad y muy educativos</p>
+										<a href="https://www.facebook.com/franck.palacios.sv">@franck.palacios <i class="fa fa-twitter"></i></a>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</section>
+
+	</div>
+
+
+
+		<script src={% static 'js/jquery-1.11.1.min.js' %}></script>
+		<script src={% static 'js/bootstrap.js' %}></script>
+
+
+
+
+
+<footer class="text-center" >
+    <div class="footer-info">
+        <div class="container">
+            <div class="row">
+                <div class="footer-col col-md-4">
+                    <h3 class="textfooter" style="color:white" >Misión</h3>
+                    <p style="text-align:justify; color:white"  >Poner a disposición la alta gama de libros en detalle a nuestros visitantes para que se interesen en un libro y continuen desarrollando su habito de lectura.</p>
+                </div>
+                <div class="footer-col col-md-4">
+                    <h3 class="textfooter" style="color:white" >Libreria Carmesi</h3>
+                    <p style="text-align: justify; color: white"  >es la mejor libreria de El Salvador.</p>
+                </div>
+                <div class="footer-col col-md-4">
+                    <h3 class="textfooter" style="color:white">Visión</h3>
+                    <p style="text-align:justify; color:white">Ser una empresa que contribuya al retorno del habito por la lectura.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-derechos">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    Copyright © Libreria Carmesí
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+	</body>
+
+</html>

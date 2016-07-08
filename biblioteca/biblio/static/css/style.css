@@ -1,0 +1,68 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	background-color: rgb(#313C4A);
+}
+
+
+h1{
+	text-align: center;
+	font-size: 575%;
+	color: #4A4444;
+	text-transform: uppercase;
+	letter-spacing: 1%;
+	margin: 45% 0;
+}
+
+h2{
+	text-align: center;
+	font-size: 275%;
+	color: #E5E5E5;
+	text-transform: uppercase;
+	letter-spacing: 1%;
+}
+
+
+/* Centrando el slider*/
+div.container{
+    width: 50%;
+    margin: auto;
+}
+
+.carousel-inner > .item > img,
+.carousel-inner > .item > a > img{
+width: 1200px;
+height: 300px; 
+margin: auto;
+}
+
+div.contenido{
+	border: 1px solid #96405C;
+    background-color: #443721;
+    margin: 20px auto 40px auto;
+    width: 100%;
+    max-width: 1030px;
+}
+
+/* Estilos aplicados a los testimonios*/
+.testimony_section{
+	padding-bottom: 32px;
+}
+
+.testimony{
+	text-align: center;
+	margin-top: 8px;
+}
+/* Estilos aplicados al footer */
+footer.text-center{
+	text-align: center;
+    background-color: #AD3239;
+}
+
+div.footer-col:hover{
+	color: #FFFFFF;
+    text-align: center;
+    opacity: 0.6;
+    -webkit-transition: padding .4s;
+}

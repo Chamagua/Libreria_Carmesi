@@ -1,0 +1,86 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <title>Contactanos</title>
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css1.css' %}"/>
+    {% block css%}
+    {% endblock %}
+
+
+        </head>
+
+        <body link="white" vlink="white" alink="orange">
+
+            <h1> --- BIBLIOTECA ---</h1>
+
+            <nav>
+                <ul>
+                  <li><a href="//127.0.0.1:8000 ">Inicio</a></li>
+                  <li><a href ="//127.0.0.1:8000/contactos/">Contactanos </a></li>
+                  <li><a href ="//127.0.0.1:8000/formsrc/">Buscar libro </a></li>
+                  <li><a href ="//127.0.0.1:8000/admin/">Administrar </a></li>
+                </ul>
+            </nav>
+
+
+         <aside>
+            <hr>
+            <h3> --Categorias-- </h3>
+            <hr>
+
+            <hr><br>
+
+
+
+            <ul>
+
+                <li><a href="/categoria/?q=griego">Griego</a></li>
+                <li><a href="/categoria/?q=infantiles">Infantiles</a></li>
+                <li><a href="/categoria/?q=computacion">Computacion</a></li>
+                <li><a href="/categoria/?q=romanticas">Romanticas</a></li>
+                <li><a href="/categoria/?q=novelas">Novelas</a></li>
+            </ul>
+
+
+        </aside>
+
+
+          <Article><hr>
+
+            <h1>Contactanos</h1>
+            {% if errors %}
+            <ul>
+            {% for error in errors %}
+               <li>{{ error }}</li>
+            {% endfor %}
+            </ul>
+            {% endif %}
+
+            <form action="/contactos/" method="post">{% csrf_token %}
+            <p>Asunto: <input type="text" name="asunto" value="{{ asunto }}"></p>
+            <p>E­mail (opcional): <input type="text" name="email" value="{{ email }}"></p>
+            <p>Mensaje: <textarea name="mensaje" rows="10" cols="50"
+            value="{{ mensaje }}"></textarea></p>  <input type="submit" value="Enviar">
+            </form>
+
+        	</article>
+
+
+                <footer>
+                    Grupo#3 Tarea SYP115 ® Sistema bibliotecario
+                </footer>
+            </body>
+        </html>

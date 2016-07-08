@@ -1,0 +1,3 @@
+sabado/14  --Las categorias ya funcionan
+sabado/14  --EL sistio de administracion ya no dice 'DJANGO'
+domigo/15  --Se quito codigo basura innecesario

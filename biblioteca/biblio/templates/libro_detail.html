@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load staticfiles%}
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <title>Detalle Libro</title>
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css1.css' %}"/>
+    {% block css%}
+    {% endblock %}
+
+
+        </head>
+
+        <body link="white" vlink="white" alink="orange">
+
+            <h1> --- BIBLIOTECA ---</h1>
+
+            <nav>
+                <ul>
+                  <li><a href="//127.0.0.1:8000">Inicio</a></li>
+                  <li><a href ="//127.0.0.1:8000/contactos/">Contactanos </a></li>
+                  <li><a href ="//127.0.0.1:8000/formsrc/">Buscar libro </a></li>
+
+                </ul>
+            </nav>
+
+
+         <aside>
+            <hr>
+            <h3> --Categorias-- </h3>
+            <hr>
+
+            <hr><br>
+
+
+
+            <ul>
+
+                <li><a href="/categoria/?q=griego">Griego</a></li>
+                <li><a href="/categoria/?q=infantiles">Infantiles</a></li>
+                <li><a href="/categoria/?q=computacion">Computacion</a></li>
+                <li><a href="/categoria/?q=romanticas">Romanticas</a></li>
+                <li><a href="/categoria/?q=novelas">Novelas</a></li>
+            </ul>
+
+
+        </aside>
+
+
+          <Article>
+
+
+            <H2>{{ object.titulo }}</h2>
+          <p>  <img src="/media/{{ object.portada }}"></p>
+
+        	</article>
+
+          <article>
+            <p>   Autor :    {{ object.editor.nombre }}<br><p>
+            <p>   Categoria : {{ object.categoria }}<br><p>
+            <p>   Contenido : {{ object.contenido }}</p><hr><hr>
+
+              <a href="">
+
+           <p>PIDE TU LIBRO HASTA LA PUERTA DE TU CASA  <p>TEL: +503 29292828</p> </p>
+
+          </article>
+
+
+                <footer>
+                    Grupo#3 Tarea SYP115 ® Sistema bibliotecario
+                </footer>
+            </body>
+        </html>

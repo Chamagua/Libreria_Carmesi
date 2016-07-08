@@ -1,0 +1,173 @@
+{% load staticfiles%}
+{% load carton_tags %}
+{% get_cart as cart %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ubicacion.</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/navStyle.css' %}">
+		{% block css %}
+    {% endblock %}
+
+	</head>
+
+	<body>
+
+		<header>
+
+			<!--Barra de navegacion-->
+
+			<nav class="navbar navbar-default navbar-fixed-top navbar">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class"navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+						<span class="sr-only">Menú</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>
+						<a href="/ " class="navbar-brand" style="color:white">Libreria Carmesí</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbar-1">
+						<ul class="nav navbar-nav">
+							<!--Posibles categorias-->
+
+						</ul>
+						{% if error %}
+              					  <p style="color: red;">Por favor introduce un término de búsqueda.</p>
+            					{% endif %}
+						<form action="/buscar/" class="navbar-form navbar-right" method="get" rolse="search">
+							<div class="form-group">
+								<a href="/show">
+									<button type="button" class="btn btn-primary" name="boton">Ver carrito
+											<div  class="glyphicon glyphicon-shopping-cart">
+									<span class="badge">{{cart.count}}
+									</span>
+
+									</div>
+								</button>
+							</a>
+
+							<input type"text" class="form-control" placeholder="Buscar libro..." name="q">
+						<input type="submit" class="btn btn-primary" value="Buscar">
+							</div>
+						</form>
+					</div>
+				</div>
+			</nav>
+
+			<!--Termina barra de navegación-->
+
+
+				<!--Inician botones con hover-->
+		<a href="/ ">
+			<div class ="contenedor" id="uno">
+				<img class="icono" src={% static 'img/nav/icon1.png' %}>
+				<p class="navtexto">Inicio</p>
+			</div>
+		</a>
+		<a href="/libros">
+			<div class ="contenedor" id="dos">
+				<img class="icono" src={% static 'img/nav/icon2.png' %}>
+				<p class="navtexto">Libros</p>
+			</div>
+		</a>
+			<!--
+			<div class ="contenedor" id="tres">
+				<img class="icono" src="img/nav/icon3.png">
+				<p class="navtexto">Google +</p>
+			</div>
+			<div class ="contenedor" id="cuatro">
+				<img class="icono" src="img/nav/icon4.png">
+				<p class="navtexto">Apple</p>
+			</div>
+		-->
+		<a href="/ubicacion">
+			<div class ="contenedor" id="cinco">
+				<img class="icono" src={% static 'img/nav/icon5.png'%}>
+				<p class="navtexto">Ubicación</p>
+			</div>
+		</a>
+
+		<a href="/contactos">
+			<div class ="contenedor" id="seis">
+				<img class="icono" src={% static 'img/nav/icon6.png' %}>
+				<p class="navtexto">Contactanos</p>
+			</div>
+		</a>
+			<!--Terminan botones con hover-->
+
+
+
+
+		</header>
+	<!--Migas de pan-->
+		<div class="container-fluid">
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li class="active" style="color:white">Ubicación</li>
+				</ol>
+
+			</div>
+		</div>
+	<!--Terminan migas de pan-->
+
+	<div class="contenido">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-6">
+					<p class="text-center"><h4>Centro Comercial Galerias</h4>Paseo General Escalón #3700, San Salvador, El Salvador<br>
+			Tel: 2215-3848</p>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7752.576213346713!2d-89.23080946432124!3d13.700992632338727!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x240bbac4a0987ec7!2sCentro+Comercial+Galerias+Escalon!5e0!3m2!1ses!2ses!4v1463285439317" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-6">
+					<p class="text-center"><h4>Centro Comercial Metrocentro San Salvador</h4>Boulevard De Los Héroes, San Salvador, El Salvador<br>
+             Tel: 2212-3725</p>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7752.423084086007!2d-89.21328056288013!3d13.705633968657567!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0000000000000000%3A0x2dd4d4fce4e71b53!2sMetrocentro+San+Salvador!5e0!3m2!1ses!2ses!4v1463286306718" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<script src={% static 'js/jquery-1.11.1.min.js' %}></script>
+	<script src={% static 'js/bootstrap.js' %}></script>
+
+
+
+	<footer class="text-center" >
+	    <div class="footer-info">
+	        <div class="container">
+	            <div class="row">
+	                <div class="footer-col col-md-4">
+	                    <h3 class="textfooter" style="color:white" >Misión</h3>
+	                    <p style="text-align:justify; color:white"  >Poner a disposición la alta gama de libros en detalle a nuestros visitantes para que se interesen en un libro y continuen desarrollando su habito de lectura.</p>
+	                </div>
+	                <div class="footer-col col-md-4">
+	                    <h3 class="textfooter" style="color:white" >Libreria Carmesi</h3>
+	                    <p style="text-align: justify; color: white"  >es la mejor libreria de El Salvador.</p>
+	                </div>
+	                <div class="footer-col col-md-4">
+	                    <h3 class="textfooter" style="color:white">Visión</h3>
+	                    <p style="text-align:justify; color:white">Ser una empresa que contribuya al retorno del habito por la lectura.</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="footer-derechos">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-12">
+	                    Copyright © Libreria Carmesí
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
+	</body>
+
+</html>

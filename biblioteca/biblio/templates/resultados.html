@@ -1,0 +1,267 @@
+{% load staticfiles%}
+{% load carton_tags %}
+{% get_cart as cart %}
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8">
+		<title>Libros.</title>
+		<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}">
+		<link rel="stylesheet" type="text/css" href="{% static 'css/navStyle.css' %}">
+    {% block css%}
+    {% endblock %}
+	</head>
+
+	<body>
+
+		<header>
+
+			<!--Barra de navegacion-->
+			<nav class="navbar navbar-default navbar-fixed-top navbar">
+				<div class="container-fluid">
+					<div class="navbar-header">
+						<button type="button" class"navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-1">
+						<span class="sr-only">Menú</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>
+					<a href="/" class="navbar-brand" style="color:white">Libreria Carmesí</a>
+					</div>
+
+					<div class="collapse navbar-collapse" id="navbar-1">
+						<ul class="nav navbar-nav">
+							<!--Posibles categorias-->
+
+						</ul>
+											{% if error %}
+													<p style="color: red;">Por favor introduce un término de búsqueda.</p>
+											{% endif %}
+
+						<form action="/buscar/" class="navbar-form navbar-right" method="get" rolse="search">
+							<div class="form-group">
+								<a href="/show">
+									<button type="button" class="btn btn-primary" name="boton">Ver carrito
+											<div  class="glyphicon glyphicon-shopping-cart">
+									<span class="badge">{{cart.count}}
+									</span>
+
+									</div>
+								</button>
+							</a>
+
+							<input type"text" class="form-control" placeholder="Buscar libro..." name="q">
+						<input type="submit" class="btn btn-primary" value="Buscar">
+							</div>
+						</form>
+					</div>
+				</div>
+			</nav>
+
+			<!--Termina barra de navegación-->
+
+
+				<!--Inician botones con hover-->
+		<a href="/ ">
+			<div class ="contenedor" id="uno">
+					<img class="icono" src={% static 'img/nav/icon1.png' %}>
+				<p class="navtexto">Inicio</p>
+			</div>
+		</a>
+		<a href="/libros">
+			<div class ="contenedor" id="dos">
+					<img class="icono" src={% static 'img/nav/icon2.png' %}>
+				<p class="navtexto">Libros</p>
+			</div>
+		</a>
+			<!--
+			<div class ="contenedor" id="tres">
+				<img class="icono" src="img/nav/icon3.png">
+				<p class="navtexto">Google +</p>
+			</div>
+			<div class ="contenedor" id="cuatro">
+				<img class="icono" src="img/nav/icon4.png">
+				<p class="navtexto">Apple</p>
+			</div>
+		-->
+		<a href="/ubicacion">
+			<div class ="contenedor" id="cinco">
+				<img class="icono" src={% static 'img/nav/icon5.png' %}>
+				<p class="navtexto">Ubicación</p>
+			</div>
+		</a>
+
+		<a href="/contactos">
+			<div class ="contenedor" id="seis">
+				<img class="icono" src={% static 'img/nav/icon6.png' %}>
+				<p class="navtexto">Contactanos</p>
+			</div>
+		</a>
+			<!--Terminan botones con hover-->
+
+
+
+
+		</header>
+	<!--Migas de pan-->
+		<div class="container-fluid">
+			<div class="col-md-12">
+				<ol class="breadcrumb">
+					<li>Libros</li>
+          <li class="active">Buscas:{{ query }}</li>
+				</ol>
+
+			</div>
+		</div>
+	<!--Terminan migas de pan-->
+
+	<aside>
+
+		<div clas="row">
+			<div class="col-md-1">
+				<ul class="nav nav-pills nav-stacked">
+					<h4> Categorias:</h4>
+
+					<li role="presentation"><a href="">Aventura</a></li>
+					<li role="presentation"><a href="/categoria/?q=cultura">Cultura</a></li>
+					<li role="presentation"><a href="/categoria/?q=economia"> Economia</a></li>
+					<li role="presentation"><a href="/categoria/?q=ficcion"> Ficción</a></li>
+					<li role="presentation"><a href="/categoria/?q=infantil">Infantil</a></li>
+					<li role="presentation"><a href="/categoria/?q=politica">Politica</a></li>
+					<li role="presentation"><a href="/categoria/?q=romance">Romantica</a></li>
+					<li role="presentation"><a href="/categoria/?q=terror">Terror</a></li>
+
+				</ul>
+			</div>
+		</div>
+
+	</aside>
+
+	<div class="contenido">
+
+		<div class="container">
+				<div class="row">
+
+          <p> Buscas: {{ query }} </p>
+
+          {% if libros %}
+              <p>Libros encontrados: {{ libros|length }} libro{{ libros|pluralize }}.</p>
+              <ul>
+					{% for libros in libros %}
+
+					<div class="col-md-4">
+							<div class="testimony mtop8">
+										<a href="#{{ libros.slug }}" data-toggle="modal">
+											<img src="/media/{{ libros.portada }}" class="img-thumbnail">
+											<p>{{ libros.titulo }} <p>
+											<p>Ver detalles</p>
+										</a>
+
+										<div class="modal fade" id="{{ libros.slug }}">
+											<div class="modal-dialog">
+
+												<div class="modal-content">
+
+													<!--Aca esta el header de la ventana modal-->
+													<div class="modal-header">
+														<button tyle="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+														<h4 class="modal-tittle">{{ libros.titulo }}</h4>
+													</div>
+													<!--Termina header de la ventana modal e inicia el contenido de la ventana-->
+													<div clas="moda-body">
+														<div class="container-fluid">
+															<div class="row">
+																<div class="col-md-6">
+																	<div class="container-fluid">
+																		<img src="/media/{{ libros.portada }}" class="img-responsive">
+																	</div>
+
+																</div>
+																<div class="col-md-6">
+																	<div class="container-fluid">
+																		<dl>
+
+																			<dt>Titulo:</dt>
+																			<dd>{{ libros.titulo }}</dd>
+																			<dt>Autor:</dt>
+																			<dd>{{ libros.autor.nombre }}</dd>
+																			<dt>Categoria:</dt>
+																			<dd>{{ libros.categoria }}</dd>
+																			<dt>Editorial:</dt>
+																			<dd>{{ libros.editor }}</dd>
+																			<dt>ISBN:</dt>
+																				<dd>{{ libros.ISBN }}</dd>
+																			<dt>Descripción:</dt>
+																			<dd>{{ libros.contenido }}</dd>
+																			<dt>Precio:</dt>
+																			<dd>${{ libros.precio }}</dd>
+																				<a href="/add/?id={{libros.id}}" target="_self"> <input type="button"  class="btn btn-primary" name="boton" value="COMPRAR" /> </a>
+
+
+																		</dl>
+																	</div>
+
+																</div>
+															</div>
+														</div>
+
+													</div>
+												</div>
+
+											</div>
+										</div>
+
+							</div>
+					</div>
+					<p style="color:black">.</p>
+					<p style="color:black">.</p>
+					{% endfor %}
+          {% else %}
+              <p>Ningún libro coincide con el criterio de búsqueda.</p>
+          {% endif %}
+
+
+				</div>
+		</div>
+
+
+	</div>
+
+
+
+	<script src={% static 'js/jquery-1.11.1.min.js' %}></script>
+	<script src={% static 'js/bootstrap.js' %}></script>
+
+	<footer class="text-center" >
+	    <div class="footer-info">
+	        <div class="container">
+	            <div class="row">
+	                <div class="footer-col col-md-4">
+	                    <h3 class="textfooter" style="color:white" >Misión</h3>
+	                    <p style="text-align:justify; color:white"  >Poner a disposición la alta gama de libros en detalle a nuestros visitantes para que se interesen en un libro y continuen desarrollando su habito de lectura.</p>
+	                </div>
+	                <div class="footer-col col-md-4">
+	                    <h3 class="textfooter" style="color:white" >Libreria Carmesi</h3>
+	                    <p style="text-align: justify; color: white"  >es la mejor libreria de El Salvador.</p>
+	                </div>
+	                <div class="footer-col col-md-4">
+	                    <h3 class="textfooter" style="color:white">Visión</h3>
+	                    <p style="text-align:justify; color:white">Ser una empresa que contribuya al retorno del habito por la lectura.</p>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="footer-derechos">
+	        <div class="container">
+	            <div class="row">
+	                <div class="col-lg-12">
+	                    Copyright © Libreria Carmesí
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</footer>
+	</body>
+
+</html>

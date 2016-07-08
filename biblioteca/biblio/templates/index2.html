@@ -1,0 +1,76 @@
+{% load staticfiles%}
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <title>Biblioteca</title>
+
+
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <link rel="stylesheet" type="text/css" href="{% static 'css/css1.css' %}"/>
+    {% block css%}
+    {% endblock %}
+
+
+        </head>
+
+        <body link="white" vlink="white" alink="orange">
+
+            <h1> --- BIBLIOTECA ---</h1>
+
+            <nav>
+                <ul>
+                    <li><a href=" ">Inicio</a></li>
+                    <li><a href ="contactos/">Contactanos </a></li>
+                    <li><a href ="formsrc/">Buscar libro </a></li>
+                    <li><a href ="//127.0.0.1:8000/admin/">Administrar </a></li>
+                </ul>
+            </nav>
+
+
+         <aside>
+
+            <h3> --Categorias-- </h3>
+            <hr>
+
+            <hr><br>
+
+
+            <ul>
+
+                <li><a href="/categoria/?q=griego">Griego</a></li>
+                <li><a href="/categoria/?q=infantiles">Infantiles</a></li>
+                <li><a href="/categoria/?q=computacion">Computacion</a></li>
+                <li><a href="/categoria/?q=romanticas">Romanticas</a></li>
+                <li><a href="/categoria/?q=novelas">Novelas</a></li>
+            </ul>
+
+
+
+        </aside>
+
+<!-- MUESTRA LA LISTA DE LIBROS -->
+          <Article><hr>
+            {% for libro in object_list %}
+                <h2><a href="/libro/{{ libro.slug }}">{{ libro.titulo }}</a></h2>
+                 <p>{{ libro.contenido }}<p>
+                <hr><br>
+
+            {% endfor %}
+
+        	</article>
+
+
+                <footer>
+                    Grupo#3 Tarea SYP115 ® Sistema bibliotecario
+                </footer>
+            </body>
+        </html>
